@@ -52,7 +52,12 @@ jobs:
   security:
     runs-on: ubuntu-latest
     steps:
+      # gitleaks scans commit ranges (--log-opts --first-parent A^..B), which
+      # requires full history. Shallow checkout (default fetch-depth: 1) fails
+      # the scan on multi-commit pushes even with zero leaks.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
