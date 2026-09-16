@@ -6,6 +6,14 @@ Retrieval-Augmented Generation over quantum error correction and quantum machine
 learning papers. Answers questions about the latest quantum computing research
 with **verifiable citations** — no hallucinations, no guessing.
 
+
+## Live demo
+
+Try the deployed app: **[quantum-rag.streamlit.app](https://quantum-rag.streamlit.app)**
+— hybrid retrieval over the 240-paper corpus with grounded, cited answers and a
+trends analytics tab. Runs entirely on CPU, deployed on Streamlit Community Cloud
+(public, no login).
+
 ## What it does
 
 - **Corpus**: 240 papers from arXiv (quant-ph, cs.ET) — open-access abstracts only
