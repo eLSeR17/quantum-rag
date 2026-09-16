@@ -12,7 +12,7 @@
 # The 240-paper chroma store (~5 MB) is committed in data/chroma/ and the
 # embed+build scripts run offline during development only.
 streamlit>=1.41,<2.0
-chromadb>=0.4.22,<1.0
+chromadb>=0.4.22,<2.0
 sentence-transformers>=5.5,<6.0
 transformers>=5.10,<6.0
 numpy>=1.24,<2.0
