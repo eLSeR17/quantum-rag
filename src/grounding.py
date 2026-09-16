@@ -27,13 +27,19 @@ def grounding_verdict(query: str, results: list[dict]) -> dict:
     if not qtokens:
         return {"score": 0.0, "verdict": "N/A", "supporting_chunks": 0, "evidence": []}
 
+    # Adaptive threshold: short queries (<=3 significant tokens) must match
+    # ALL their tokens; longer queries need at least GROUNDING_MIN_SHARED.
+    # This keeps the guarantee honest for 2-token queries like "quantum
+    # advantage" where an absolute >=3 threshold would be unsatisfiable.
+    min_shared = min(config.GROUNDING_MIN_SHARED, len(qtokens))
+
     supporting = 0
     evidence = []
     for r in results:
         ctokens = _tokens(r["text"])
         shared = qtokens & ctokens
         ratio = len(shared) / len(qtokens) if qtokens else 0.0
-        if len(shared) >= config.GROUNDING_MIN_SHARED:
+        if len(shared) >= min_shared:
             supporting += 1
             evidence.append(
                 {

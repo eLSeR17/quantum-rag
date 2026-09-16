@@ -48,3 +48,24 @@ def test_normalize():
     assert normed[0] == 0.0
     assert normed[2] == 1.0
     assert 0.0 < normed[1] < 1.0
+
+
+def test_grounding_adaptive_short_query():
+    """2-token query must ground when both tokens match (adaptive threshold)."""
+    from src.grounding import grounding_verdict
+    good = [
+        {"text": "quantum advantage achieved by random sampling circuits", "score": 0.8},
+        {"text": "quantum advantage unclear for noisy devices", "score": 0.6},
+    ]
+    v = grounding_verdict("quantum advantage", good)
+    assert v["verdict"].startswith("GROUNDING")
+    assert v["supporting_chunks"] == 2
+
+    # Unrelated chunks → honest NO GROUNDING
+    bad = [
+        {"text": "the weather is sunny in madrid today", "score": 0.5},
+        {"text": "neural networks classify images with high accuracy", "score": 0.4},
+    ]
+    v2 = grounding_verdict("quantum advantage", bad)
+    assert v2["verdict"].startswith("NO GROUNDING")
+    assert v2["supporting_chunks"] == 0
