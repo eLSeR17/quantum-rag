@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# pre-push hook — replica localmente las comprobaciones del CI antes del push.
+# Instalación:  git config core.hooksPath scripts/hooks
+set -uo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+FAIL=0
+step() { printf '\033[1;36m[pre-push] %s\033[0m\n' "$1"; }
+fail() { printf '\033[1;31m[pre-push] %s\033[0m\n' "$1"; FAIL=1; }
+
+step "ruff check"
+if ! .venv/bin/ruff check src scripts tests demo_ui; then
+  fail "ruff: hay errores de lint"
+fi
+
+step "pytest"
+if ! .venv/bin/python -m pytest tests -q; then
+  fail "pytest: hay tests fallando"
+fi
+
+if [ "$FAIL" -eq 0 ]; then
+  step "OK local verificado — push permitido"
+else
+  fail "Push BLOQUEADO"
+  exit 1
+fi
+exit 0

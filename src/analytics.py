@@ -9,10 +9,9 @@ from __future__ import annotations
 import json
 import re
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timezone
 
-from . import config
-from . import store
+from . import config, store
 
 _KEYWORD_RE = re.compile(r"[a-z][a-z-]{3,}")
 
@@ -50,7 +49,7 @@ def compute_analytics() -> dict:
         "categories": [{"category": c, "count": n} for c, n in cats.most_common(15)],
         "top_authors": [{"author": a, "count": n} for a, n in authors.most_common(15)],
         "top_keywords": top_keywords,
-        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
 
 

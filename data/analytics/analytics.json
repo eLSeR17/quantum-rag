@@ -1,0 +1,286 @@
+{
+  "empty": false,
+  "n_chunks": 613,
+  "n_docs": 240,
+  "years": [
+    {
+      "year": "2005",
+      "count": 1
+    },
+    {
+      "year": "2009",
+      "count": 2
+    },
+    {
+      "year": "2011",
+      "count": 2
+    },
+    {
+      "year": "2012",
+      "count": 4
+    },
+    {
+      "year": "2013",
+      "count": 10
+    },
+    {
+      "year": "2014",
+      "count": 15
+    },
+    {
+      "year": "2015",
+      "count": 7
+    },
+    {
+      "year": "2016",
+      "count": 13
+    },
+    {
+      "year": "2017",
+      "count": 17
+    },
+    {
+      "year": "2018",
+      "count": 13
+    },
+    {
+      "year": "2019",
+      "count": 17
+    },
+    {
+      "year": "2020",
+      "count": 41
+    },
+    {
+      "year": "2021",
+      "count": 39
+    },
+    {
+      "year": "2022",
+      "count": 62
+    },
+    {
+      "year": "2023",
+      "count": 91
+    },
+    {
+      "year": "2024",
+      "count": 132
+    },
+    {
+      "year": "2025",
+      "count": 89
+    },
+    {
+      "year": "2026",
+      "count": 58
+    }
+  ],
+  "categories": [
+    {
+      "category": "-",
+      "count": 689
+    },
+    {
+      "category": "h",
+      "count": 683
+    },
+    {
+      "category": "t",
+      "count": 677
+    },
+    {
+      "category": "a",
+      "count": 664
+    },
+    {
+      "category": "p",
+      "count": 651
+    },
+    {
+      "category": "n",
+      "count": 633
+    },
+    {
+      "category": "q",
+      "count": 600
+    },
+    {
+      "category": "u",
+      "count": 589
+    },
+    {
+      "category": "s",
+      "count": 546
+    },
+    {
+      "category": ".",
+      "count": 537
+    },
+    {
+      "category": ",",
+      "count": 521
+    },
+    {
+      "category": " ",
+      "count": 521
+    },
+    {
+      "category": "c",
+      "count": 513
+    },
+    {
+      "category": "E",
+      "count": 230
+    },
+    {
+      "category": "T",
+      "count": 224
+    }
+  ],
+  "top_authors": [
+    {
+      "author": " ",
+      "count": 11746
+    },
+    {
+      "author": "a",
+      "count": 7216
+    },
+    {
+      "author": "n",
+      "count": 5954
+    },
+    {
+      "author": "e",
+      "count": 5215
+    },
+    {
+      "author": "i",
+      "count": 5206
+    },
+    {
+      "author": ",",
+      "count": 5024
+    },
+    {
+      "author": "o",
+      "count": 3823
+    },
+    {
+      "author": "r",
+      "count": 3745
+    },
+    {
+      "author": "h",
+      "count": 2803
+    },
+    {
+      "author": "u",
+      "count": 2533
+    },
+    {
+      "author": "l",
+      "count": 2461
+    },
+    {
+      "author": "s",
+      "count": 2258
+    },
+    {
+      "author": "g",
+      "count": 2044
+    },
+    {
+      "author": "t",
+      "count": 2006
+    },
+    {
+      "author": "d",
+      "count": 1258
+    }
+  ],
+  "top_keywords": [
+    {
+      "keyword": "quantum",
+      "count": 3956
+    },
+    {
+      "keyword": "that",
+      "count": 1048
+    },
+    {
+      "keyword": "this",
+      "count": 950
+    },
+    {
+      "keyword": "error",
+      "count": 886
+    },
+    {
+      "keyword": "with",
+      "count": 794
+    },
+    {
+      "keyword": "learning",
+      "count": 639
+    },
+    {
+      "keyword": "code",
+      "count": 627
+    },
+    {
+      "keyword": "surface",
+      "count": 604
+    },
+    {
+      "keyword": "computing",
+      "count": 567
+    },
+    {
+      "keyword": "neural",
+      "count": 527
+    },
+    {
+      "keyword": "correction",
+      "count": 519
+    },
+    {
+      "keyword": "machine",
+      "count": 504
+    },
+    {
+      "keyword": "algorithms",
+      "count": 492
+    },
+    {
+      "keyword": "classical",
+      "count": 488
+    },
+    {
+      "keyword": "qubits",
+      "count": 435
+    },
+    {
+      "keyword": "codes",
+      "count": 361
+    },
+    {
+      "keyword": "which",
+      "count": 360
+    },
+    {
+      "keyword": "using",
+      "count": 342
+    },
+    {
+      "keyword": "networks",
+      "count": 333
+    },
+    {
+      "keyword": "data",
+      "count": 292
+    }
+  ],
+  "generated_at": "2026-09-16T18:46:04"
+}

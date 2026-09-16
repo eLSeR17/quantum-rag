@@ -47,7 +47,7 @@ def split_sections(text: str) -> list[tuple[str, str]]:
     return sections
 
 
-def _window(text: str, size: int = None, overlap: int = None) -> list[str]:
+def _window(text: str, size: int | None = None, overlap: int | None = None) -> list[str]:
     """Sliding-window split of a long block."""
     size = size or config.CHUNK_SIZE
     overlap = overlap or config.CHUNK_OVERLAP

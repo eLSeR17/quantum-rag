@@ -23,9 +23,10 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 try:
-    from src import store, retriever, grounding, analytics as qanalytics
+    from src import analytics as qanalytics
+    from src import grounding, retriever, store
     IMPORT_OK = True
-except Exception as exc:  # pragma: no cover — deploy edge cases
+except Exception as exc:  # noqa: BLE001  # pragma: no cover — deploy edge cases
     IMPORT_OK = False
     IMPORT_ERR = repr(exc)
 
@@ -37,7 +38,7 @@ def _load_analytics() -> dict | None:
         return None
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
+    except Exception:  # noqa: BLE001
         return None
 
 

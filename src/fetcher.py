@@ -60,7 +60,7 @@ def parse_feed(xml_text: str) -> list[Paper]:
     return papers
 
 
-def fetch_papers(max_results: int = None) -> list[Paper]:
+def fetch_papers(max_results: int | None = None) -> list[Paper]:
     """Fetch papers for all configured arXiv queries."""
     max_results = max_results or config.ARXIV_MAX_RESULTS
     seen: dict[str, Paper] = {}
@@ -73,7 +73,7 @@ def fetch_papers(max_results: int = None) -> list[Paper]:
                 if p.arxiv_id not in seen:
                     seen[p.arxiv_id] = p
             time.sleep(3)  # arXiv rate limit
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001
             print(f"[fetcher] ERROR fetching {label}: {exc}")
     print(f"[fetcher] total unique papers: {len(seen)}")
     return list(seen.values())

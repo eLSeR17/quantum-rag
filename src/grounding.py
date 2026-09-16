@@ -8,13 +8,12 @@ matches the query terms.
 from __future__ import annotations
 
 import re
+
 from . import config
 
 _TOKEN_RE = re.compile(r"[a-z0-9]{3,}")
 _STOP = frozenset(
-    "the and are is was were been being have has had do does did will would "
-    "shall should may might can could a an in on at to for of with by from "
-    "this that these those it its".split()
+    ["the", "and", "are", "is", "was", "were", "been", "being", "have", "has", "had", "do", "does", "did", "will", "would", "shall", "should", "may", "might", "can", "could", "a", "an", "in", "on", "at", "to", "for", "of", "with", "by", "from", "this", "that", "these", "those", "it", "its"]
 )
 
 
@@ -45,11 +44,12 @@ def grounding_verdict(query: str, results: list[dict]) -> dict:
                 }
             )
 
-    total_ratio = supporting / len(results) if results else 0.0
-    score = round(total_ratio * 2 + (len(results) > 0) * 0.3, 3)
-    score = min(score, 1.0)
+    # Honest, interpretable rule: at least half of the retrieved chunks must
+    # share enough terms with the query to claim grounding.
+    support_ratio = supporting / len(results) if results else 0.0
+    score = round(support_ratio, 3)
 
-    if score >= config.GROUNDING_MIN_SCORE:
+    if support_ratio >= config.GROUNDING_MIN_SCORE and supporting >= 1:
         verdict = "GROUNDING: Answer is supported by retrieved evidence"
     else:
         verdict = "NO GROUNDING: Evidence insufficient or irrelevant"

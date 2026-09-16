@@ -45,3 +45,13 @@ def test_grounding_verdict():
     v = grounding_verdict("surface codes error correction", results)
     assert v["verdict"].startswith("GROUNDING")
     assert v["supporting_chunks"] >= 1
+    assert v["score"] >= 0.5
+
+    # 0 supporting chunks → never claim grounding (honest failure)
+    bad = [
+        {"text": "Graphene has a magic angle at 1.1 degrees", "score": 0.5},
+        {"text": "Neural networks classify images with high accuracy", "score": 0.4},
+    ]
+    v2 = grounding_verdict("surface codes error correction", bad)
+    assert v2["verdict"].startswith("NO GROUNDING")
+    assert v2["supporting_chunks"] == 0

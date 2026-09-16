@@ -10,8 +10,7 @@ import math
 import re
 from collections import Counter
 
-from . import config
-from . import store
+from . import config, store
 
 _TOKEN_RE = re.compile(r"[a-z0-9]{2,}")
 
@@ -66,7 +65,7 @@ def _normalize(scores: list[float]) -> list[float]:
     return [(s - mn) / rng for s in scores]
 
 
-def hybrid_search(query: str, top_k: int = None, doc_filter: str | None = None) -> list[dict]:
+def hybrid_search(query: str, top_k: int | None = None, doc_filter: str | None = None) -> list[dict]:
     """Vector + BM25 hybrid with optional doc_id metadata filter."""
     top_k = top_k or config.TOP_K
     alpha = config.ALPHA_HYBRID

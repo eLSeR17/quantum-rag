@@ -2,6 +2,19 @@
 
 from __future__ import annotations
 
+import logging
+import os
+
+# No anonymous telemetry: everything stays local. Must be set before the
+# chromadb import happens (it reads settings at client creation).
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
+os.environ["CHROMA_ANONYMIZED_TELEMETRY"] = "False"
+os.environ["CHROMA_TELEMETRY"] = "False"
+os.environ["chromadb_telemetry"] = "False"
+# chromadb 0.6.3 calls its posthog capture() with the wrong signature even
+# when telemetry is disabled, spamming stderr. Silence that logger.
+logging.getLogger("chromadb.telemetry.product.posthog").setLevel(logging.CRITICAL)
+
 from . import config
 
 
@@ -17,6 +30,21 @@ def _collection(client):
     )
 
 
+def _sanitize_metadata(meta: dict) -> dict:
+    """ChromaDB accepts only str/int/float/bool metadata values."""
+    clean = {}
+    for k, v in (meta or {}).items():
+        if isinstance(v, (str, int, float, bool)):
+            clean[k] = v
+        elif isinstance(v, (list, tuple)):
+            clean[k] = ", ".join(str(x) for x in v)
+        elif v is None:
+            clean[k] = ""
+        else:
+            clean[k] = str(v)
+    return clean
+
+
 def add_chunks(chunks: list[dict], vectors: list[list[float]]) -> int:
     """Add chunk dicts (with .text/.metadata) + precomputed vectors."""
     client = _client()
@@ -29,7 +57,7 @@ def add_chunks(chunks: list[dict], vectors: list[list[float]]) -> int:
             continue
         ids.append(cid)
         docs.append(chunk["text"])
-        metas.append(chunk.get("metadata") or {})
+        metas.append(_sanitize_metadata(chunk.get("metadata") or {}))
         vecs.append(vec)
     if ids:
         coll.add(ids=ids, documents=docs, metadatas=metas, embeddings=vecs)
@@ -42,7 +70,7 @@ def count() -> int:
     return coll.count()
 
 
-def query(query_vector: list[float], top_k: int = None) -> list[dict]:
+def query(query_vector: list[float], top_k: int | None = None) -> list[dict]:
     """Vector-only query; returns top-k chunks with metadata + distances."""
     top_k = top_k or config.TOP_K
     client = _client()
