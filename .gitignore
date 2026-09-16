@@ -1,8 +1,6 @@
 # Data (regenerable)
-data/chroma/
 data/raw/*.pdf
 data/raw/*.txt
-*.sqlite3
 
 # Python
 __pycache__/
