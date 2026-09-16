@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>http://arxiv.org/abs/2510.24181v1</id>
+    <title>Threshold of the Surface Code Under Correlated Noise</title>
+    <summary>We study exact error thresholds of the surface code under spatially correlated noise. Using a mapping to a statistical mechanics model, we compute the threshold for various noise channels.</summary>
+    <author><name>Alice Quantum</name></author>
+    <author><name>Bob Threshold</name></author>
+    <published>2025-10-28T00:00:00Z</published>
+    <category term="quant-ph"/>
+    <category term="cs.ET"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2410.19921v2</id>
+    <title>Noise and Decoherence in NISQ-Era Quantum Processors</title>
+    <summary>We characterize decoherence channels in superconducting qubits and analyze their impact on variational quantum algorithm performance.</summary>
+    <author><name>Charlie Decoherence</name></author>
+    <published>2024-10-25T00:00:00Z</published>
+    <category term="quant-ph"/>
+  </entry>
+</feed>

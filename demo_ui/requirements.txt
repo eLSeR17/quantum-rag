@@ -1,0 +1,19 @@
+# QuantumRAG — demo UI dependencies (demo_ui/requirements.txt)
+# ---------------------------------------------------------------------------
+# Minimal by design: the live Streamlit Community Cloud deploy only needs the
+# retrieval stack (sentence-transformers for embedding queries, chromadb to read
+# the pre-built store) plus Streamlit itself. numpy is a required transitive
+# dependency; pandas powers the Analytics tab.
+#
+# Version floors are conservative (>=,<) so local runs and Community Cloud stay
+# reproducible. chromadb and sentence-transformers are NOT imported at module
+# level in the Streamlit app — they load at query time.
+#
+# The 240-paper chroma store (~5 MB) is committed in data/chroma/ and the
+# embed+build scripts run offline during development only.
+streamlit>=1.41,<2.0
+chromadb>=0.4.22,<1.0
+sentence-transformers>=2.7,<4.0
+transformers>=4.39,<5.0
+numpy>=1.24,<2.0
+pandas>=2.0

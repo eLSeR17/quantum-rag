@@ -1,0 +1,182 @@
+[
+  {
+    "id": "qr-001",
+    "question": "What is the threshold of the surface code and why does it matter for quantum error correction?",
+    "topic": "surface_code",
+    "expected_keywords": [
+      "threshold",
+      "surface code",
+      "error rate",
+      "fault tolerance"
+    ],
+    "relevant_doc_id": "arxiv-2510.24181v1",
+    "relevant_doc_hint": "Studies exact error thresholds of surface codes under correlated noise.",
+    "ground_truth": "The surface code threshold defines the maximum error rate per physical qubit below which logical error rates decrease exponentially with code distance, making fault-tolerant quantum computation possible."
+  },
+  {
+    "id": "qr-002",
+    "question": "How does quantum error correction encode information using distance in stabilizer codes?",
+    "topic": "error_correction_distance",
+    "expected_keywords": [
+      "distance",
+      "error correction",
+      "encodes",
+      "stabilizer"
+    ],
+    "relevant_doc_id": "arxiv-1710.03636v2",
+    "relevant_doc_hint": "Analyzes quantum error correction distance and its role in protecting information.",
+    "ground_truth": "Quantum error correction uses code distance d: a code with distance d can correct up to floor((d-1)/2) errors by encoding quantum information redundantly in stabilizer subspaces."
+  },
+  {
+    "id": "qr-003",
+    "question": "What is quantum machine learning and how does it differ from classical machine learning?",
+    "topic": "qml",
+    "expected_keywords": [
+      "quantum",
+      "machine learning",
+      "circuit",
+      "parameters",
+      "gradient"
+    ],
+    "relevant_doc_id": "arxiv-2211.07056v1",
+    "relevant_doc_hint": "Reviews quantum machine learning circuits and variational methods.",
+    "ground_truth": "Quantum machine learning uses parameterized quantum circuits to process data encoded in quantum states, potentially offering advantages in expressivity and kernel computation over classical ML for specific tasks."
+  },
+  {
+    "id": "qr-004",
+    "question": "What is the variational quantum eigensolver (VQE) and how does it find ground state energies?",
+    "topic": "vqe",
+    "expected_keywords": [
+      "variational",
+      "eigensolver",
+      "energy",
+      "ground state",
+      "optimization"
+    ],
+    "relevant_doc_id": "arxiv-2306.09984v1",
+    "relevant_doc_hint": "Covers variational quantum algorithms for machine learning and eigenvalue problems.",
+    "ground_truth": "VQE uses a parameterized quantum circuit (ansatz) to prepare trial states and a classical optimizer to minimize the expectation value of the Hamiltonian, converging to the ground state energy."
+  },
+  {
+    "id": "qr-005",
+    "question": "What is quantum advantage and what evidence has been demonstrated for computational superiority?",
+    "topic": "quantum_advantage",
+    "expected_keywords": [
+      "quantum advantage",
+      "supremacy",
+      "computational",
+      "samples",
+      "classical"
+    ],
+    "relevant_doc_id": "arxiv-2403.08780v1",
+    "relevant_doc_hint": "Discusses quantum advantage claims and computational complexity implications.",
+    "ground_truth": "Quantum advantage is the demonstration that a quantum computer can solve a computational problem exponentially faster than any known classical algorithm, as shown in random circuit sampling experiments."
+  },
+  {
+    "id": "qr-006",
+    "question": "How do Bell states demonstrate quantum entanglement and why are they important for quantum communication?",
+    "topic": "entanglement",
+    "expected_keywords": [
+      "Bell state",
+      "entanglement",
+      "nonlocal",
+      "correlation",
+      "communication"
+    ],
+    "relevant_doc_id": "arxiv-2109.03400v2",
+    "relevant_doc_hint": "Explores quantum advantage through entanglement in communication protocols.",
+    "ground_truth": "Bell states are maximally entangled two-qubit states that exhibit nonlocal correlations violating Bell inequalities, forming the foundation of quantum teleportation and superdense coding."
+  },
+  {
+    "id": "qr-007",
+    "question": "How can noise and decoherence affect quantum machine learning models and how is that addressed?",
+    "topic": "decoherence",
+    "expected_keywords": [
+      "noise",
+      "decoherence",
+      "quantum",
+      "neural network",
+      "regularization"
+    ],
+    "relevant_doc_id": "arxiv-2410.19921v2",
+    "relevant_doc_hint": [
+      "Method for noise-induced regularization in quantum neural networks."
+    ],
+    "ground_truth": "Noise and decoherence degrade quantum neural network performance; noise-induced regularization methods adapt training to the noisy landscape, improving robustness of QML models on NISQ devices."
+  },
+  {
+    "id": "qr-008",
+    "question": "What are topological quantum codes and how do they protect quantum information?",
+    "topic": "topological_codes",
+    "expected_keywords": [
+      "topological",
+      "code",
+      "anyons",
+      "braiding",
+      "fault tolerant"
+    ],
+    "relevant_doc_id": "arxiv-1603.02286v3",
+    "relevant_doc_hint": "Describes topological approaches to quantum error correction and their properties.",
+    "ground_truth": "Topological codes encode quantum information in global properties of a 2D lattice, protected by topological invariants; they are inherently fault-tolerant and their error correction is local."
+  },
+  {
+    "id": "qr-009",
+    "question": "How does the quantum Fourier transform work and what problems can it solve efficiently?",
+    "topic": "qft",
+    "expected_keywords": [
+      "Fourier transform",
+      "quantum",
+      "period",
+      "phase",
+      "Shor"
+    ],
+    "relevant_doc_id": "arxiv-2206.14115v1",
+    "relevant_doc_hint": "Discusses quantum Fourier transform applications in period finding and factoring.",
+    "ground_truth": "The quantum Fourier transform (QFT) efficiently maps quantum states from the computational basis to the Fourier basis using controlled-phase gates, enabling efficient period finding as in Shor's algorithm."
+  },
+  {
+    "id": "qr-010",
+    "question": "What is quantum key distribution (QKD) and how does it guarantee secure communication?",
+    "topic": "qkd",
+    "expected_keywords": [
+      "key distribution",
+      "quantum",
+      "BB84",
+      "security",
+      "Eve"
+    ],
+    "relevant_doc_id": "arxiv-2506.12096v2",
+    "relevant_doc_hint": "Reviews quantum key distribution protocols and their information-theoretic security.",
+    "ground_truth": "QKD (e.g., BB84 protocol) uses quantum states to distribute encryption keys; any eavesdropping attempt disturbs the quantum states and is detected, guaranteeing information-theoretic security."
+  },
+  {
+    "id": "qr-011",
+    "question": "How do stabilizer codes detect and correct quantum errors using syndrome measurements?",
+    "topic": "stabilizer",
+    "expected_keywords": [
+      "stabilizer",
+      "syndrome",
+      "measurement",
+      "error",
+      "detect"
+    ],
+    "relevant_doc_id": "arxiv-2107.08974v2",
+    "relevant_doc_hint": "Analyzes stabilizer codes and syndrome-based error detection in quantum computing.",
+    "ground_truth": "Stabilizer codes detect errors by measuring eigenvalues of stabilizer operators; the syndrome identifies the error without measuring the encoded data, enabling correction."
+  },
+  {
+    "id": "qr-012",
+    "question": "What error rates are achievable with current surface code implementations and how close are they to the fault-tolerance threshold?",
+    "topic": "threshold_rates",
+    "expected_keywords": [
+      "error rate",
+      "surface code",
+      "threshold",
+      "physical qubits",
+      "logical"
+    ],
+    "relevant_doc_id": "arxiv-2510.24181v1",
+    "relevant_doc_hint": "Provides analysis of surface code error rates and comparison to theoretical thresholds.",
+    "ground_truth": "Current surface code experiments demonstrate error rates approaching but still above the fault-tolerance threshold (~0.1%-1%), with recent improvements pushing closer to the regime where logical error rates decrease with code size."
+  }
+]
