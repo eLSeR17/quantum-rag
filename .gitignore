@@ -1,0 +1,23 @@
+# Data (regenerable)
+data/chroma/
+data/raw/*.pdf
+data/raw/*.txt
+*.sqlite3
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+
+# Env (never commit secrets)
+.env
+*.env
