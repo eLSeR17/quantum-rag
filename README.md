@@ -1,15 +1,18 @@
 # QuantumRAG — Quantum Computing Research Assistant
 
+[![CI](https://github.com/eLSeR17/quantum-rag/actions/workflows/ci.yml/badge.svg)](https://github.com/eLSeR17/quantum-rag/actions/workflows/ci.yml)
+
 Retrieval-Augmented Generation over quantum error correction and quantum machine
 learning papers. Answers questions about the latest quantum computing research
 with **verifiable citations** — no hallucinations, no guessing.
 
 ## What it does
 
-- **Corpus**: 200+ papers from arXiv (quant-ph, cs.LG, cs.ET) + Qiskit/PennyLane docs
+- **Corpus**: 240 papers from arXiv (quant-ph, cs.ET) — open-access abstracts only
 - **Retrieval**: hybrid vector search + BM25 + metadata filtering (author, date, arXiv category)
 - **Grounding**: every answer is cross-checked against the retrieved evidence
 - **Analytics**: trends dashboard (papers per year, keyword growth, top labs, technique hotness)
+- **Evals**: golden dataset (12 quantum topics) + heuristic/LLM judges, recall@k & MRR
 - **Mode**: evidence-first by default (shows chunks + grounding verdict); LLM generation optional
 
 ## Quick start
@@ -26,6 +29,9 @@ python scripts/build_store.py
 
 # Run the demo
 streamlit run demo_ui/app.py
+
+# Run the eval suite (12 golden cases)
+python scripts/run_eval.py
 ```
 
 ## Architecture
@@ -73,15 +79,41 @@ quantum-rag/
 │   ├── build_store.py       # embed + store in ChromaDB
 │   └── run_eval.py          # golden dataset evaluation
 ├── data/
-│   ├── raw/            # downloaded PDFs/text
-│   ├── chroma/         # vector store (git-ignored)
-│   └── analytics/      # generated statistics
+│   ├── raw/            # arXiv metadata (abstracts)
+│   ├── chroma/         # vector store (committed for Cloud deploy)
+│   └── evals/          # golden dataset (12 cases)
 ├── docs/
 │   ├── LIVE_DEMO.md    # archived demo run
 │   └── CORPUS.md       # corpus description + sources
 ├── tests/
 └── pyproject.toml
 ```
+
+## Evaluation
+
+Automatic evals run over 12 golden questions covering the main corpus
+fronts (surface codes, stabilizer codes, QML, VQE, QKD, QFT, entanglement,
+decoherence, topological codes). Two judges:
+
+- **HeuristicJudge** (default, CI-safe): lexical overlap + keyword coverage
+- **OllamaJudge** (opt-in): LLM-as-judge against local Ollama, falls back to heuristic
+
+| Metric | Current |
+|--------|---------|
+| Recall@8 | 1.000 |
+| MRR | 0.674 |
+| Faithfulness | 0.623 |
+| Relevance | 0.805 |
+
+Full per-case breakdown in [`docs/LIVE_DEMO.md`](docs/LIVE_DEMO.md). A 12/12
+recall@8 means every golden question retrieves its ground-truth paper in the
+top-8 results; MRR 0.674 reflects strong first-hit ranking.
+
+## Security
+
+See [`SECURITY.md`](SECURITY.md): zero API keys in the repo, no runtime network calls
+(except optional local Ollama), ChromaDB in-process only, verified supply chain,
+`pip-audit` + gitleaks in CI.
 
 ## Scope
 
