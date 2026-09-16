@@ -4,7 +4,7 @@
 chromadb>=0.4.22,<1.0
 # sentence-transformers>=5.5 floors transformers to the 5.x line;
 # transformers>=5.10 clears PYSEC-2026-2288/2289/2290/3929 (fixed in 5.3/5.5/5.10).
-sentence-transformers>=5.5,<6.0
+sentence-transformers>=5.5,<7.0
 transformers>=5.10,<6.0
 streamlit>=1.41,<2.0
 pandas>=2.0
