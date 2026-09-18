@@ -6,6 +6,28 @@ Retrieval-Augmented Generation over quantum error correction and quantum machine
 learning papers. Answers questions about the latest quantum computing research
 with **verifiable citations** — no hallucinations, no guessing.
 
+## The problem
+
+Quantum computing research moves too fast for manual reading: keeping up with
+QEC and quantum ML means working through hundreds of arXiv papers. Generic
+LLMs are worse than useless here — they confidently cite papers that do not
+exist and confabulate results. In a field where precision is the whole point,
+an ungrounded answer is a bug.
+
+## The solution
+
+QuantumRAG answers questions **from the corpus itself**: 240 arXiv papers,
+indexed with hybrid retrieval (vector + BM25 + metadata filters) and grounded
+with a deterministic lexical verdict. Retrieved chunks and the grounding
+verdict are part of the answer — no retrieval, no answer. The system refuses
+to guess.
+
+- **Evidence-first by default**: the demo shows the retrieved chunks and the
+  grounding verdict; LLM generation is an option, never the default
+- **Verifiable quality**: 12 golden cases — recall@8 **1.000** means every
+  golden question retrieves its ground-truth paper in the top-8
+- **Runs on CPU**: no GPU, no paid API, deployed free on Streamlit Community
+  Cloud (public, no login)
 
 ## Live demo
 
